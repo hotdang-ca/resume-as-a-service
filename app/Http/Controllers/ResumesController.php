@@ -25,7 +25,7 @@ class ResumesController extends Controller
       $contactset = ContactSet::where('resume_id', $id)->first();
       $skills = Skill::where('resume_id', $id)->orderBy('percentage', 'desc')->get();
       $languages = Language::where('resume_id', $id)->orderBy('percentage', 'desc')->get();
-      $hobbies = Hobby::where('resume_id', 1)->get();
+      $hobbies = Hobby::where('resume_id', $id)->get();
 
       foreach($experiences as $experience) {
         if ($experience['year_end'] == 0) {

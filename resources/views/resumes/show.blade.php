@@ -4,6 +4,7 @@
 @section('education')
 <div class="box">
   <h2>Education</h2>
+  @if(isset($educations))
   <ul id="education" class="clearfix">
     @foreach ($educations as $education)
     <li>
@@ -15,12 +16,14 @@
     </li>
     @endforeach
   </ul>
+ @endif
 </div>
 @stop
 
 @section('experience')
 <div class="box">
   <h2>Experiences</h2>
+  @if(isset($experiences))
   @foreach ($experiences as $experience)
   <div class="job clearfix">
     <div class="col-xs-3">
@@ -33,12 +36,14 @@
     </div>
   </div>
   @endforeach
+  @endif
 </div>
 @stop
 
 @section('contactset')
 <div class="box clearfix">
   <h2>Contact</h2>
+  @if(isset($contactset))
   @if($contactset->phone)
   <div class="contact-item">
     <div class="icon pull-left text-center"><span class="fa fa-phone fa-fw"></span></div>
@@ -92,12 +97,14 @@
     <div class="description pull-right">{{ $contactset->googleplus }}</div>
   </div>
   @endif
+  @endif
 </div>
 @stop
 
 @section('skills')
 <div class="box">
   <h2>Skills</h2>
+  @if(isset($skills))
   <div class="skills">
     @foreach($skills as $skill)
     <div class="item-skills" data-percent="{{ $skill->percentage / 100 }}">{{ $skill->name }}</div>
@@ -109,25 +116,30 @@
       <div class="legend-right legend">Master</div>
     </div>
   </div>
+  @endif
 </div>
 @stop
 
 @section('languages')
 <div class="box">
   <h2>Spoken/Written Languages</h2>
+  @if(isset($languages))
   <div id="language-skills">
     @foreach($languages as $language)
     <div class="skill">{{ $language->name }} <div class="icons pull-right"><div style="width: {{ $language->percentage }}%;" class="icons-red"></div></div></div>
     @endforeach
   </div>
+  @endif
 </div>
 @stop
 
 @section('hobbies')
 <div class="box">
   <h2>Hobbies</h2>
+  @if(isset($hobbies))
   @foreach($hobbies as $hobby)
   <div class="hobby">{{ $hobby->name }}</div>
   @endforeach
+  @endif
 </div>
 @stop
