@@ -1,0 +1,36 @@
+<?php
+
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreateEducationTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('educations', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('year');
+            $table->string('title');
+            $table->string('facility');
+            $table->longtext('description');
+            $table->integer('resume_id')->unsigned();
+            $table->foreign('resume_id')->references('id')->on('resumes');
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::drop('educations');
+    }
+}
