@@ -15,6 +15,7 @@
   </head>
   <body>
     <div class="container">
+
       <div class="row">
         <div class="col-xs-12">
           <div id="photo-header" class="text-center">
@@ -29,13 +30,12 @@
           </div>
         </div>
       </div>
+
       <div class="row">
         <div class="col-xs-12 col-sm-7">
           <!-- ABOUT ME -->
-          <div class="box">
-            <h2>About Me</h2>
-            <p>{{ $resume->about_me }}</p>
-          </div>
+          @yield('aboutme')
+
           <!-- EDUCATION -->
           @yield('education')
 

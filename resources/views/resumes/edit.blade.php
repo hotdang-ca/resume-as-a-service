@@ -1,16 +1,19 @@
 @extends ('resumes')
 
-
 @section('aboutme')
 <div class="box">
-  <h2>About Me</h2>
-  <p>{{ $resume->about_me }}</p>
+  <h2><em>Edit:</em> About Me</h2>
+  {!! Form::model($resume, ['action' => 'ResumesController@storeAbout']) !!}
+    {!! Form::textarea('about_me', null, ['class' => 'form-control'] ) !!}
+    {!! Form::hidden('udid', $resume->udid) !!}
+    {!! Form::submit('Save About', ['class' => 'btn btn-primary form-control']) !!}
+  {!! Form::close() !!}
 </div>
 @stop
 
 @section('education')
 <div class="box">
-  <h2>Education</h2>
+  <h2><em>Edit:</em> Education</h2>
   @if(isset($educations))
   <ul id="education" class="clearfix">
     @foreach ($educations as $education)
@@ -24,12 +27,24 @@
     @endforeach
   </ul>
  @endif
+ <div class=""
+<!-- form for editing -->
+{!! Form::open(['action' => 'ResumesController@newEducation']) !!}
+  {!! Form::text('title', null, ['class' => 'form-control', 'placeholder' => 'Name of Award/Designation' ]) !!}
+  {!! Form::number('year', null, ['class' => 'form-control', 'placeholder' => 'Year Completed' ]) !!}
+  {!! Form::text('facility', null, ['class' => 'form-control', 'placeholder' => 'Facility Name' ]) !!}
+  {!! Form::textarea('description', null, ['class' => 'form-control', 'placeholder' => 'Description of accomplishments, certificates, diplomas, etc...' ]) !!}
+  {!! Form::hidden('udid', $resume->udid) !!}
+  {!! Form::submit('Add Education Entry', ['class' => 'btn btn-primary form-control']) !!}
+{!! Form::close() !!}
+<!-- end form -->
+
 </div>
 @stop
 
 @section('experience')
 <div class="box">
-  <h2>Experiences</h2>
+  <h2><em>Edit:</em> Experiences</h2>
   @if(isset($experiences))
   @foreach ($experiences as $experience)
   <div class="job clearfix">
@@ -49,7 +64,7 @@
 
 @section('contactset')
 <div class="box clearfix">
-  <h2>Contact</h2>
+  <h2><em>Edit:</em> Contact</h2>
   @if(isset($contactset))
   @if($contactset->phone)
   <div class="contact-item">
@@ -110,7 +125,7 @@
 
 @section('skills')
 <div class="box">
-  <h2>Skills</h2>
+  <h2><em>Edit:</em> Skills</h2>
   @if(isset($skills))
   <div class="skills">
     @foreach($skills as $skill)
@@ -129,7 +144,7 @@
 
 @section('languages')
 <div class="box">
-  <h2>Spoken/Written Languages</h2>
+  <h2><em>Edit:</em> Spoken/Written Languages</h2>
   @if(isset($languages))
   <div id="language-skills">
     @foreach($languages as $language)
@@ -142,7 +157,7 @@
 
 @section('hobbies')
 <div class="box">
-  <h2>Hobbies</h2>
+  <h2><em>Edit:</em> Hobbies</h2>
   @if(isset($hobbies))
   @foreach($hobbies as $hobby)
   <div class="hobby">{{ $hobby->name }}</div>
