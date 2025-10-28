@@ -19,7 +19,7 @@ class CreateExperiencesTable extends Migration
             $table->integer('year_end');
             $table->string('job_title');
             $table->text('description');
-            $table->integer('resume_id');
+            $table->integer('resume_id')->unsigned();
             $table->foreign('resume_id')->references('id')->on('resumes');
             $table->timestamps();
         });

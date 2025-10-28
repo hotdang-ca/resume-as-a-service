@@ -16,7 +16,7 @@ class CreateSkillsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->integer('percentage');
-            $table->integer('resume_id');
+            $table->integer('resume_id')->unsigned();
             $table->foreign('resume_id')->references('id')->on('resumes');
             $table->timestamps();
         });
