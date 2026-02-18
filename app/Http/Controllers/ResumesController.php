@@ -82,6 +82,16 @@ class ResumesController extends Controller {
     return redirect()->action('ResumesController@editResume', $resume->udid);
   }
 
+  public function newExperience() {
+    $input = Request::all();
+    $resume = Resume::where('udid', '=', $input['udid'])->first();
+    $input['resume_id'] = $resume->id;
+
+    $experience = Experience::create($input);
+
+    return redirect()->action('ResumesController@editResume', $resume->udid);
+  }
+
   public function get($slug) {
     $resume = Resume::where('slug', '=', $slug)->first();
     $id = $resume->id;

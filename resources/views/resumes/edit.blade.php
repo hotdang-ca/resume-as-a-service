@@ -2,6 +2,7 @@
 
 @section('aboutme')
 <div class="box">
+  {{ $resume->about_me }}
   <h2><em>Edit:</em> About Me</h2>
   {!! Form::model($resume, ['action' => 'ResumesController@storeAbout']) !!}
     {!! Form::textarea('about_me', null, ['class' => 'form-control'] ) !!}
@@ -27,7 +28,7 @@
     @endforeach
   </ul>
  @endif
- <div class=""
+<div class=""
 <!-- form for editing -->
 {!! Form::open(['action' => 'ResumesController@newEducation']) !!}
   {!! Form::text('title', null, ['class' => 'form-control', 'placeholder' => 'Name of Award/Designation' ]) !!}
@@ -60,6 +61,21 @@
   @endforeach
   @endif
 </div>
+<div class=""
+<!-- form for editing -->
+{!! Form::open(['action' => 'ResumesController@newExperience']) !!}
+  {!! Form::text('company', null, ['class' => 'form-control', 'placeholder' => 'Company Name' ]) !!}
+  {!! Form::number('year_start', null, ['class' => 'form-control', 'placeholder' => 'Year Started' ]) !!}
+  {!! Form::number('year_end', null, ['class' => 'form-control', 'placeholder' => 'Year Ended (blank for current)' ]) !!}
+
+  {!! Form::text('job_title', null, ['class' => 'form-control', 'placeholder' => 'Job Title' ]) !!}
+  {!! Form::textarea('description', null, ['class' => 'form-control', 'placeholder' => 'Description of job role, responsibilities, etc...' ]) !!}
+  {!! Form::hidden('udid', $resume->udid) !!}
+  {!! Form::submit('Add Experience Entry', ['class' => 'btn btn-primary form-control']) !!}
+{!! Form::close() !!}
+<!-- end form -->
+</div>
+
 @stop
 
 @section('contactset')
