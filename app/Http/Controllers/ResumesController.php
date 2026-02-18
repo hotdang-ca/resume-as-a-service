@@ -14,6 +14,7 @@ use App\Language;
 use App\Hobby;
 
 use Uuid;
+use Log;
 
 class ResumesController extends Controller {
 
@@ -89,6 +90,29 @@ class ResumesController extends Controller {
 
     $experience = Experience::create($input);
 
+    return redirect()->action('ResumesController@editResume', $resume->udid);
+  }
+
+  public function newContactSet() {
+    $input = Request::all();
+    $resume = Resume::where('udid', '=', $input['udid'])->first();
+    
+    Log::info('*** NEW CONTACT SET ***');
+
+    $contactset = ContactSet::updateOrCreate(
+      ['resume_id' => $resume->id],
+      [
+        'email' => $input['email'],
+        'phone' => $input['phone'],
+        'phone' => $input['phone'],
+        'twitter' => $input['twitter'],
+        'facebook' => $input['facebook'],
+        'skype' => $input['skype'],
+        'linkedin' => $input['linkedin'],
+        'googleplus' => $input['googleplus'],
+      ]
+    );
+    
     return redirect()->action('ResumesController@editResume', $resume->udid);
   }
 

@@ -10,6 +10,7 @@ Route::post('resumes', 'ResumesController@store');
 Route::post('resumes/edit/about', 'ResumesController@storeAbout');
 Route::post('resumes/edit/education', 'ResumesController@newEducation');
 Route::post('resumes/edit/experience', 'ResumesController@newExperience');
+Route::post('resumes/edit/contactset', 'ResumesController@newContactSet');
 
 // Form for editing a resume
 Route::get('resumes/edit/{uuid}', 'ResumesController@editResume');

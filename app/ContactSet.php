@@ -17,6 +17,5 @@ class ContactSet extends Model
       'linkedin',
       'googleplus',
       'resume_id',
-
     ];
 }

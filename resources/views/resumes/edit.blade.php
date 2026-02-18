@@ -82,61 +82,93 @@
 <div class="box clearfix">
   <h2><em>Edit:</em> Contact</h2>
   @if(isset($contactset))
-  @if($contactset->phone)
-  <div class="contact-item">
-    <div class="icon pull-left text-center"><span class="fa fa-phone fa-fw"></span></div>
-    <div class="title only pull-right"><a href="tel:{{ $contactset->phone }}">{{ $contactset->phone }}</a></div>
-  </div>
-  @endif
+    @if($contactset->phone)
+    <div class="contact-item">
+      <div class="icon pull-left text-center"><span class="fa fa-phone fa-fw"></span></div>
+      <div class="title only pull-right"><a href="tel:{{ $contactset->phone }}">{{ $contactset->phone }}</a></div>
+    </div>
+    @endif
 
-  @if($contactset->email)
-  <div class="contact-item">
-    <div class="icon pull-left text-center"><span class="fa fa-envelope fa-fw"></span></div>
-    <div class="title only pull-right"><a href="mailto:{{ $contactset->email }}?Subject=Resume">{{ $contactset->email }}</a></div>
-  </div>
-  @endif
+    @if($contactset->email)
+    <div class="contact-item">
+      <div class="icon pull-left text-center"><span class="fa fa-envelope fa-fw"></span></div>
+      <div class="title only pull-right"><a href="mailto:{{ $contactset->email }}?Subject=Resume">{{ $contactset->email }}</a></div>
+    </div>
+    @endif
 
-  @if($contactset->twitter)
-  <div class="contact-item">
-    <div class="icon pull-left text-center"><span class="fa fa-twitter fa-fw"></span></div>
-    <div class="title pull-right">Twitter</div>
-    <div class="description pull-right"><a href="https://twitter.com/{{ $contactset->twitter }}" target="_blank">https://twitter.com/{{ $contactset->twitter }}</a></div>
-  </div>
-  @endif
+    @if($contactset->twitter)
+    <div class="contact-item">
+      <div class="icon pull-left text-center"><span class="fa fa-twitter fa-fw"></span></div>
+      <div class="title pull-right">Twitter</div>
+      <div class="description pull-right"><a href="https://twitter.com/{{ $contactset->twitter }}" target="_blank">https://twitter.com/{{ $contactset->twitter }}</a></div>
+    </div>
+    @endif
 
-  @if($contactset->facebook)
-  <div class="contact-item">
-    <div class="icon pull-left text-center"><span class="fa fa-facebook fa-fw"></span></div>
-    <div class="title pull-right">Facebook</div>
-    <div class="description pull-right"><a href="https://www.facebook.com/{{ $contactset->facebook }}" target="_blank">https://www.facebook.com/{{ $contactset->facebook }}</a></div>
-  </div>
-  @endif
+    @if($contactset->facebook)
+    <div class="contact-item">
+      <div class="icon pull-left text-center"><span class="fa fa-facebook fa-fw"></span></div>
+      <div class="title pull-right">Facebook</div>
+      <div class="description pull-right"><a href="https://www.facebook.com/{{ $contactset->facebook }}" target="_blank">https://www.facebook.com/{{ $contactset->facebook }}</a></div>
+    </div>
+    @endif
 
-  @if($contactset->skype)
-  <div class="contact-item">
-    <div class="icon pull-left text-center"><span class="fa fa-skype fa-fw"></span></div>
-    <div class="title pull-right">Skype</div>
-    <div class="description pull-right"><a href="skype://{{ $contactset->skype }}">{{ $contactset->skype }}</a></div>
-  </div>
-  @endif
+    @if($contactset->skype)
+    <div class="contact-item">
+      <div class="icon pull-left text-center"><span class="fa fa-skype fa-fw"></span></div>
+      <div class="title pull-right">Skype</div>
+      <div class="description pull-right"><a href="skype://{{ $contactset->skype }}">{{ $contactset->skype }}</a></div>
+    </div>
+    @endif
 
-  @if($contactset->linkedin)
-  <div class="contact-item">
-    <div class="icon pull-left text-center"><span class="fa fa-linkedin fa-fw"></span></div>
-    <div class="title pull-right">LinkedIn</div>
-    <div class="description pull-right">{{ $contactset->linkedin }}</div>
-  </div>
-  @endif
+    @if($contactset->linkedin)
+    <div class="contact-item">
+      <div class="icon pull-left text-center"><span class="fa fa-linkedin fa-fw"></span></div>
+      <div class="title pull-right">LinkedIn</div>
+      <div class="description pull-right">{{ $contactset->linkedin }}</div>
+    </div>
+    @endif
 
-  @if($contactset->googleplus)
-  <div class="contact-item">
-    <div class="icon pull-left text-center"><span class="fa fa-google-plus fa-fw"></span></div>
-    <div class="title pull-right">Google+</div>
-    <div class="description pull-right">{{ $contactset->googleplus }}</div>
-  </div>
-  @endif
+    @if($contactset->googleplus)
+    <div class="contact-item">
+      <div class="icon pull-left text-center"><span class="fa fa-google-plus fa-fw"></span></div>
+      <div class="title pull-right">Google+</div>
+      <div class="description pull-right">{{ $contactset->googleplus }}</div>
+    </div>
+    @endif
   @endif
 </div>
+
+<!-- set new contact set -->
+<div class=""
+<!-- form for editing -->
+{!! Form::open(['action' => 'ResumesController@newContactSet']) !!}
+  <label for="phone">Phone</label>
+  {!! Form::text('phone', $contactset->phone, ['class' => 'form-control', 'placeholder' => 'eg, 204-995-9500', 'type' => 'tel' ]) !!}
+  
+  <label for="email">Email</label>
+  {!! Form::text('email', $contactset->email, ['class' => 'form-control', 'placeholder' => 'eg, user@email.com', 'type' => 'email' ]) !!}
+
+  <label for="twitter">Twitter</label>
+  {!! Form::text('twitter', $contactset->twitter, ['class' => 'form-control', 'placeholder' => 'eg, @username' ]) !!}
+
+  <label for="facebook">Facebook</label>
+  {!! Form::text('facebook', $contactset->facebook, ['class' => 'form-control', 'placeholder' => 'eg, UserName' ]) !!}
+  
+  <label for="skype">Skype</label>
+  {!! Form::text('skype', $contactset->skype, ['class' => 'form-control', 'placeholder' => 'eg, UserName' ]) !!}
+
+  <label for="linkedin">LinkedIn</label>
+  {!! Form::text('linkedin', $contactset->linkedin, ['class' => 'form-control', 'placeholder' => 'eg, username' ]) !!}
+  
+  <label for="googleplus">Google Plus</label>
+  {!! Form::text('googleplus', $contactset->googleplus, ['class' => 'form-control', 'placeholder' => 'eg, +username' ]) !!}
+
+  {!! Form::hidden('udid', $resume->udid) !!}
+  {!! Form::submit('Set Contact Info', ['class' => 'btn btn-primary form-control']) !!}
+{!! Form::close() !!}
+<!-- end form -->
+</div>
+
 @stop
 
 @section('skills')
